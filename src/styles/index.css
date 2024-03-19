@@ -10,3 +10,31 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+body {
+  margin: 0;
+  overflow: hidden; /* Evita el desplazamiento vertical cuando se aplica el desenfoque */
+  position: relative; /* Permite que el pseudo-elemento esté posicionado en relación con el cuerpo */
+  font-family: "Josefin Sans", sans-serif;
+}
+
+body::before {
+  content: "";
+  background-image: url(https://thumbs.dreamstime.com/z/imagen-vectorial-de-un-bloc-notas-o-para-p%C3%A1gina-blanca-en-blanco-una-l%C3%ADnea-diario-foto-stock-186319636.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(5px); /* Ajusta el valor según tu preferencia de desenfoque */
+  position: fixed; /* Fija el pseudo-elemento en la ventana gráfica */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Coloca el pseudo-elemento detrás del contenido del cuerpo */
+}
+
+div{
+    padding: 5px 10px 5px 5px;
+    margin: 2px;
+    /* border-style: solid;
+    border-color: black; */
+}
