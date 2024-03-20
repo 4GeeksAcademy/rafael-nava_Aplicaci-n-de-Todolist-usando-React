@@ -2,10 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    /* text-align: center; */
     
-  
-
 }
 
 .container{
@@ -13,8 +11,26 @@
     background: #17a2b8;
     color: #333;
     border-radius: 10px;
+
+    max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
     
 
+}
+
+@media (max-width: 768px) {
+  /* Estilos para pantallas más pequeñas */
+  .container {
+    padding: 10px;
+  }
+}
+
+
+
+
+.centrarText{
+  text-align: center;
 }
 
 .input{
@@ -28,4 +44,17 @@
     justify-content: flex-start;
     align-items: baseline;
   
+  }
+
+  .date{
+    font-size: 8px;
+    text-align: right;
+  }
+
+  .rowLi{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding: 0%;
+
   }

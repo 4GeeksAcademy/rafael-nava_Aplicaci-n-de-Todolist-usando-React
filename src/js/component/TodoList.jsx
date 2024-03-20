@@ -13,16 +13,21 @@ function TodoList() {
             setIsAlertVisible(true);
             return
         } else {
-            setAddInput([...addInput, input]);
+            const newItem = {
+                text: input,
+                date: new Date().toLocaleDateString()
+            };
+            setAddInput([...addInput, newItem]);
             setInput("");
             return
         }
     };
     // para cargar el codigo cada vez que se ingrese un input
-    useEffect(() =>{
+    useEffect(() => {
         if (input.trim() === "") {
             setIsAlertVisible(false);
-    }},[input]);
+        }
+    }, [input]);
 
     const addCommentEnter = (e) => {
         if (e.key === "Enter" && input.trim() != "") {
@@ -47,7 +52,7 @@ function TodoList() {
     return (
         <div className={styles.container}>
             <div className="card w-100 mb-3">
-                <div className="card-body">
+                <div className="card-body text-center">
                     <h1 className="card-title">To Do List</h1>
 
                     <input type="text" value={input}
@@ -55,8 +60,8 @@ function TodoList() {
                         onKeyPress={addCommentEnter}
                         placeholder="¿Que necesitas hacer?" className={styles.input}>
                     </input>
-                     
-                     <button onClick={addComment} type="button" className="btn btn-primary position-relative">
+
+                    <button onClick={addComment} type="button" className="btn btn-primary position-relative">
                         agregar
                         <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             N° {numberElement()}
@@ -68,20 +73,26 @@ function TodoList() {
             </div>
             <div className="container">
                 <div className="card bg-danger">
-                                    
-                {isAlertVisible && (
-                <div className="alert alert-warning" role="alert">
-                    No se puede agregar texto vacío.
-                </div>)}
 
+                    {isAlertVisible && (
+                        <div className="alert alert-warning text-center" role="alert">
+                            No se puede agregar texto vacío.
+                        </div>)}
 
                     <ul className="list-group list-group-flush rounded">
-                        {addInput.map((addInput, index) => {
+                        {addInput.map((item, index) => {
                             return (
                                 <div className={styles.liList}>
                                     <div className="col-11">
                                         <li key={index} className="list-group-item rounded" id="liList" onMouseOver={() => { setIsVisible(!isVisible) }}>
-                                            {addInput}
+                                            <div className={styles.rowLi}>
+                                                <div className="col-10">
+                                                    <span className={styles.text}>{item.text}</span>
+                                                </div>
+                                                <div className="col">
+                                                    <small className={styles.date}>{item.date}</small>
+                                                </div>
+                                            </div>
                                         </li>
                                     </div>
                                     <div className="col">
